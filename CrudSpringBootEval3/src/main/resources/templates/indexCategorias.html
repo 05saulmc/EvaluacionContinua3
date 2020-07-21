@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>LISTA CATEGORIAS</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+	<br><br>
+	<div class="container mt-4">
+	
+		<a th:href="@{/newCategorias}" class="btn btn-primary">Nueva Categoria</a>
+	
+		<table class="table">
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>NOMBRES</td>
+					<td>DESCRIPCION</td>
+					<td>ACCIONES</td>
+				</tr>
+			</thead>
+		<tbody>
+			<tr th:each="categorias:${categorias}">
+				<td th:text="${categorias.idcategoria}"></td>
+				<td th:text="${categorias.nombrecategoria}"></td>
+				<td th:text="${categorias.descripcion}"></td>
+				<td>
+					<a th:href="@{/editarCategorias/}+${categorias.idcategoria}" class="btn btn-warning">Editar</a>		
+								
+					<a th:onclick= "eliminarCategorias([[${categorias.idcategoria}]])" class="btn btn-danger">Eliminar</a>
+				
+				</td>				
+			</tr>		
+		</tbody>
+	</table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="Funciones.js"></script>
+
+
+</body>
+</html>
